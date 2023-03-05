@@ -28,6 +28,23 @@ jobs:
                $CIRCLE_BUILD_NUM
                $CIRCLE_BUILD_URL
                $CIRCLE_WORKFLOW_ID
+  print_to_workspace:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo "this message is stored in workspace" > ~/output.txt
+      - persist_to_workspace: 
+          root: ~/
+          paths: output.txt
+
+  print_from_workspace:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - attach_workspace: 
+          at: ~/
+      - run: cat ~/output.txt
+
 workflows:
   # Name the workflow "welcome"
   welcome:
@@ -42,3 +59,6 @@ workflows:
       - test_env_variable:
           requires:
             - print_world
+      - print_to_workspace
+      - print_from_workspace: 
+          requires: print_to_workspace
