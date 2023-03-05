@@ -5,6 +5,12 @@ orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
+commands: 
+  print_from_command:
+    steps:
+      - run: 
+          echo ${CIRCLE_WORKFLOW_ID}
+                "Printed from command function"
 jobs:
   print_hello:
     docker:
@@ -32,7 +38,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "this message is stored in workspace" > ~/output.txt
+      - run: echo "Hi Nitesh, this message is stored in workspace" > ~/output.txt
       - persist_to_workspace: 
           root: ~/
           paths: output.txt
@@ -44,6 +50,12 @@ jobs:
       - attach_workspace: 
           at: ~/
       - run: cat ~/output.txt
+
+  print_from_command_job:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - print_from_command 
 
 workflows:
   # Name the workflow "welcome"
@@ -63,3 +75,4 @@ workflows:
       - print_from_workspace: 
           requires: 
             - print_to_workspace
+      - print_from_command_job
