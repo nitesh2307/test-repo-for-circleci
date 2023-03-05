@@ -60,7 +60,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - print_from_command:
-          id: << "passed from job" >>
+          id: << 'passed from job' >>
 
 workflows:
   # Name the workflow "welcome"
