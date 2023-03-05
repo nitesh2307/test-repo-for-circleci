@@ -25,6 +25,8 @@ jobs:
          name: "echo an env var that is part of our project"
          command: 
           echo $CIRCLE_USERNAME
+          echo $CIRCLE_BUILD_NUM
+          echo $CIRCLE_BUILD_URL
 workflows:
   # Name the workflow "welcome"
   welcome:
