@@ -36,5 +36,3 @@ workflows:
           requires:
             - print_hello
       - test_env_variable
-          requires:
-            - print_world
