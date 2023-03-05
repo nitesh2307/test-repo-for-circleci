@@ -26,6 +26,11 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo NiteshK
+      - run: exit 1
+      - run: 
+          name: on error
+          command: echo "On Error - Check your code Nitesh"
+          When: on_fail
   test_env_variable:
     docker:
       - image: cimg/base:2020.01
