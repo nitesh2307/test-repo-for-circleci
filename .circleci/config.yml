@@ -61,4 +61,5 @@ workflows:
             - print_world
       - print_to_workspace
       - print_from_workspace: 
-          requires: print_to_workspace
+          requires: 
+            - print_to_workspace
