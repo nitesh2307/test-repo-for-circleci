@@ -26,7 +26,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo NiteshK
-      - run: exit 1
+      #- run: exit 1
       - run: 
           name: on error
           command: echo "On Error - Check your code Nitesh"
