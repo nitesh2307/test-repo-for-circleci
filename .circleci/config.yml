@@ -27,6 +27,7 @@ jobs:
           echo $CIRCLE_USERNAME
                $CIRCLE_BUILD_NUM
                $CIRCLE_BUILD_URL
+               $CIRCLE_WORKFLOW_ID
 workflows:
   # Name the workflow "welcome"
   welcome:
